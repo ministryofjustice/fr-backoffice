@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
   def index
-    @data = 'ok'
+    @page_title = 'Placeholder'
   end
 end
