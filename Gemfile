@@ -18,8 +18,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 
 # Gov.uk styles
-gem 'govuk_frontend_toolkit', '>= 2.0.1'
-gem 'govuk_elements_rails', '>= 0.1.1'
+gem 'govuk_frontend_toolkit'
+gem 'govuk_elements_rails'
 
 # MOJ styles
 gem 'moj_template'
