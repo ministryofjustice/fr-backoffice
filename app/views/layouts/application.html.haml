@@ -21,11 +21,11 @@
 - content_for :content_override do
   %main#page-container{ role: "main" }
     .phase-banner
-      %p
-        %span
-          %strong.phase-tag
+      %p>
+        %span>
+          %strong.phase-tag>
             =config_item(:phase)
-          This is a new service - #{link_to "your feedback", config_item(:feedback_url)} will help us to improve it.  If you need help with using the online service, we can offer #{link_to 'technical help', '#'}.
+          This is a new service - #{link_to "your feedback", config_item(:feedback_url)} will help us to improve it.  If you need help using the online service, we can offer #{link_to 'technical help', '#'}.
     =yield
 
 - content_for :footer_app_links do
