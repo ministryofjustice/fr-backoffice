@@ -11,6 +11,10 @@ Rails.application.routes.draw do
     get  '/terms',          controller: :static, action: :terms, as: :terms
     get  '/expired',        controller: :static, action: :expired, as: :expired
 
+
+    get '/remission_thresholds',    controller: :remission_calculator, action: :thresholds
+    get '/fee_contribution',        controller: :remission_calculator, action: :contribution
+
     # The priority is based upon order of creation: first created -> highest priority.
     # See how all your routes lay out with "rake routes".
 
