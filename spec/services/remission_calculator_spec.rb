@@ -31,6 +31,16 @@ describe RemissionCalculator, type: :service do
           expect(rc.maximum_contribution(1118.45)).to eq 15
         end
       end
+
+    end
+    context 'partnered' do
+      context 'two children' do
+
+        it 'should return £880 for income of £3500' do
+          rc = RemissionCalculator.new(:partnered, 2)
+          expect(rc.maximum_contribution(3500)).to eq 880
+        end
+      end
     end
   end
 
@@ -101,9 +111,10 @@ describe RemissionCalculator, type: :service do
         rc = RemissionCalculator.new(:single, 2)
         expect(rc.partial_remission_cap).to eq 5575
       end
+    end
 
-      context 'partnered' do
-        it 'should return 5245 for partnered person with no children' do
+    context 'partnered' do
+      it 'should return 5245 for partnered person with no children' do
         rc = RemissionCalculator.new(:partnered, 0)
         expect(rc.partial_remission_cap).to eq 5245
       end
@@ -116,7 +127,6 @@ describe RemissionCalculator, type: :service do
       it 'should return 5980 for partnered person with 3 children' do
         rc = RemissionCalculator.new(:partnered, 3)
         expect(rc.partial_remission_cap).to eq 5980
-      end
       end
     end
   end
