@@ -17,6 +17,6 @@
 
 require 'rails_helper'
 
-RSpec.describe Claim, :type => :model do
+describe Claim, :type => :model do
   pending "add some examples to (or delete) #{__FILE__}"
 end

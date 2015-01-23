@@ -23,9 +23,28 @@
       = af.text_field :ni_number, class: 'narrow'
 
 
-  -# %section
-  -#   %h2 Evidence
-  -#   = fields_for @claim.evidence do |ef|
-    
+  %section
+    %h2 Evidence
+    = fields_for @claim.evidence do |ef|
+      = field_set_tag 'Correct evidence supplied?', class: 'radio inline' do
+        .inline
+          .option
+            = ef.label 'claim_evidence_supplied_yes' do
+              = ef.radio_button :supplied, 'Yes'
+          .option
+            = ef.label 'claim_evidence_supplied_no' do 
+              = ef.radio_button :supplied, 'No'
+
+  %section
+    %h2 Income
+    = fields_for @claim.applicant do |af|
+      = field_set_tag 'Status', class: 'radio inline' do
+        .inline
+          .option
+            = af.label 'claim_applicant_status_single' do
+              = af.radio_button :status, 'single'
+          .option
+            = af.label 'claim_applicant_status_partnered' do
+              = af.radio_button :status, 'partnered'
       
 

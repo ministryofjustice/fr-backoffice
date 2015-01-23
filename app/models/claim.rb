@@ -21,4 +21,6 @@ class Claim < ActiveRecord::Base
   has_one     :evidence
 
 
+
+
 end
