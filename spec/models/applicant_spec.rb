@@ -1,15 +1,33 @@
+# == Schema Information
+#
+# Table name: applicants
+#
+#  id                     :integer          not null, primary key
+#  title                  :string(255)
+#  forename               :string(255)
+#  surname                :string(255)
+#  date_of_birth          :date
+#  ni_number              :string(255)
+#  status                 :string(255)
+#  partners_age           :integer
+#  num_dependent_children :integer
+#  created_at             :datetime
+#  updated_at             :datetime
+#
+
+
+
 require 'rails_helper'
 
 describe Applicant, :type => :model do
 
-  context 'validations' do
-
-    let(:applicant)   { Applicant.new(
+  let(:applicant)   { Applicant.new(
                             title:  'Mr',
                             forename: 'Stephen',
                             surname: 'Richards',
+                            ni_number: 'ys327296x',
                             date_of_birth: 20.years.ago)}
-
+  context 'validations' do
     context 'presence' do
       
       it 'should generate error messages for each mandatory attribute that isnt present' do
@@ -34,9 +52,20 @@ describe Applicant, :type => :model do
 
     context 'date of birth validation' do
       it 'should not accept a date of birth less than 18 years ago' do
-        applicant.date_of_birth = 18.years.ago - 1.day
+        applicant.date_of_birth = 18.years.ago + 1.day
         expect(applicant.valid?).to be false
         expect(applicant.errors[:date_of_birth]).to eq ['Applicant must be at least 18 years of age']
+      end
+    end
+  end
+
+
+  context 'persistence' do
+    it 'should save and re-read and get same values in each column' do
+      applicant.save!
+      reloaded_applicant = Applicant.find(applicant.id)
+      applicant.attribute_names.each do |attr_name|
+        expect(applicant.send(attr_name)).to eq reloaded_applicant.send(attr_name)
       end
     end
   end

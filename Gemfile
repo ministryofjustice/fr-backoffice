@@ -37,4 +37,10 @@ gem 'logstasher'
 group :development, :test do
   gem 'simplecov', require: false
   gem 'rspec-rails'
+  gem 'awesome_print'
+  gem 'factory_girl_rails'
+end
+
+group :development do
+  gem 'annotate', '~> 2.6.5'
 end

@@ -1,0 +1,31 @@
+%h1 Record an application for Fee Remission
+
+
+
+= form_for @claim, url: claim_new_path, :html => {method: :post} do |form|
+
+  %section
+    %h2 Applcant Details
+    = fields_for @claim.applicant do |af|
+      = af.label :title, 'Title'
+      = af.text_field :title, class: 'narrow'
+
+      = af.label :forename, 'Forename'
+      = af.text_field :forename
+
+      = af.label :surname, "Surname"
+      = af.text_field :surname
+
+      = af.label :date_of_birth, "Date of birth"
+      = af.date_field :date_of_birth, class: 'narrow'
+
+      = af.label :ni_number, 'National Insurance Number'
+      = af.text_field :ni_number, class: 'narrow'
+
+
+  -# %section
+  -#   %h2 Evidence
+  -#   = fields_for @claim.evidence do |ef|
+    
+      
+

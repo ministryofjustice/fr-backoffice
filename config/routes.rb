@@ -1,5 +1,19 @@
 Rails.application.routes.draw do
 
+  get 'claim/index'
+
+  get 'claim/new'
+
+  get 'claim/create'
+
+  get 'claim/update'
+
+  get 'claim/destroy'
+
+  get 'claim/show'
+
+  get 'claim/edit'
+
   scope FrBackoffice::Application.config.relative_url_root || '/' do
     root 'welcome#index'
     get 'welcome/index'
