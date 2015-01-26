@@ -6,7 +6,7 @@
   
   = render partial: 'applicant', locals: { applicant: @claim.applicant }
 
-  = render partial: 'evidence', locals: { evidence: @claim.evidence }
+  = render partial: 'evidence', locals: { evidence: @claim.evidence, missing_evidence_reasons: @mers }
  
   = render partial: 'income', locals: { applicant: @claim.applicant }
 
