@@ -1,26 +1,31 @@
-%section
-  %h2 Evidence
-  = fields_for evidence do |ef|
-    = field_set_tag 'Correct evidence supplied?', class: 'radio inline' do
-      .inline
-        .option
-          = ef.label 'claim_evidence_supplied_yes' do
-            Yes
-            = ef.radio_button :supplied, 'Yes'
-        .option
-          = ef.label 'claim_evidence_supplied_no' do
-            No 
-            = ef.radio_button :supplied, 'No'
 
-    = field_set_tag '', class: 'radio' do
-      .options
-        - missing_evidence_reasons.each do |mer|
-          .option
-            = ef.label 'Reasons' do
-              = ef.check_box :reason_ids
-              = mer.name
+%section 
+%h2 Evidence
 
-    Custom Reason
-    %p
-    = ef.text_area :custom_reason, class: 'custom_reason'
+
+= fields_for evidence do |ef|
+  %fieldset.inline
+    %legend.form-label
+      Correct evidence supplied?
+    .form-group.form-group-compound
+      %label.block-label{for: 'radio-evidence-yes', :'data-target' => 'missing-evidence-reasons', for: 'radio-evidence-yes'}
+        = ef.radio_button :supplied, 'Yes', {id: 'radio-evidence-yes', name: 'evidence-supplied-radio-group'}
+        Yes
+      %label.block-label{for: 'radio-evidence-no'}
+        = ef.radio_button :supplied, 'No', {id: 'radio-evidence-no', name: 'evidence-supplied-radio-group'}
+        No 
+    
+    .panel-indent#missing-evidence-reasons
+      = field_set_tag '', class: 'radio' do
+        .options
+          - missing_evidence_reasons.each do |mer|
+            .option
+              = ef.label 'Reasons' do
+                = ef.check_box :reason_ids
+                = mer.name
+
+
+      Custom Reason
+      %p
+      = ef.text_area :custom_reason, class: 'custom_reason'
   
