@@ -6,6 +6,7 @@ class ClaimController < ApplicationController
     @claim = Claim.new
     @claim.applicant = Applicant.new
     @claim.evidence = Evidence.new
+    @mers = MissingEvidenceReason.all
   end
 
   def create

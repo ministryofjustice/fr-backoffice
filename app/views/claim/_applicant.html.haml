@@ -1,0 +1,17 @@
+%section
+  %h2 Applcant Details
+  = fields_for applicant do |af|
+    = af.label :title, 'Title'
+    = af.text_field :title, class: 'narrow'
+
+    = af.label :forename, 'Forename'
+    = af.text_field :forename
+
+    = af.label :surname, "Surname"
+    = af.text_field :surname
+
+    = af.label :date_of_birth, "Date of birth"
+    = af.date_field :date_of_birth, class: 'narrow'
+
+    = af.label :ni_number, 'National Insurance Number'
+    = af.text_field :ni_number, class: 'narrow'

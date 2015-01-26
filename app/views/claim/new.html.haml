@@ -3,48 +3,12 @@
 
 
 = form_for @claim, url: claim_new_path, :html => {method: :post} do |form|
+  
+  = render partial: 'applicant', locals: { applicant: @claim.applicant }
 
-  %section
-    %h2 Applcant Details
-    = fields_for @claim.applicant do |af|
-      = af.label :title, 'Title'
-      = af.text_field :title, class: 'narrow'
+  = render partial: 'evidence', locals: { evidence: @claim.evidence }
+ 
+  = render partial: 'income', locals: { applicant: @claim.applicant }
 
-      = af.label :forename, 'Forename'
-      = af.text_field :forename
-
-      = af.label :surname, "Surname"
-      = af.text_field :surname
-
-      = af.label :date_of_birth, "Date of birth"
-      = af.date_field :date_of_birth, class: 'narrow'
-
-      = af.label :ni_number, 'National Insurance Number'
-      = af.text_field :ni_number, class: 'narrow'
-
-
-  %section
-    %h2 Evidence
-    = fields_for @claim.evidence do |ef|
-      = field_set_tag 'Correct evidence supplied?', class: 'radio inline' do
-        .inline
-          .option
-            = ef.label 'claim_evidence_supplied_yes' do
-              = ef.radio_button :supplied, 'Yes'
-          .option
-            = ef.label 'claim_evidence_supplied_no' do 
-              = ef.radio_button :supplied, 'No'
-
-  %section
-    %h2 Income
-    = fields_for @claim.applicant do |af|
-      = field_set_tag 'Status', class: 'radio inline' do
-        .inline
-          .option
-            = af.label 'claim_applicant_status_single' do
-              = af.radio_button :status, 'single'
-          .option
-            = af.label 'claim_applicant_status_partnered' do
-              = af.radio_button :status, 'partnered'
-      
+  
 

@@ -1,0 +1,13 @@
+%section
+  %h2 Evidence
+  = fields_for evidence do |ef|
+    = field_set_tag 'Correct evidence supplied?', class: 'radio inline' do
+      .inline
+        .option
+          = ef.label 'claim_evidence_supplied_yes' do
+            Yes
+            = ef.radio_button :supplied, 'Yes'
+        .option
+          = ef.label 'claim_evidence_supplied_no' do
+            No 
+            = ef.radio_button :supplied, 'No'
