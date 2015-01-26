@@ -21,8 +21,10 @@ class Applicant < ActiveRecord::Base
   has_many :applications
 
   validates :title, :forename, :surname, :date_of_birth, :ni_number, presence: true
+  validates :status, inclusion: { in: %w(Single Couple), message: "%{value} is not a valid status" }
   validate  :ni_number_validation
   validate  :date_of_birth_validation
+
 
 
   def ni_number_validation

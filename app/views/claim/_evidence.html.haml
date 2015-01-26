@@ -16,13 +16,13 @@
         No 
     
     .panel-indent#missing-evidence-reasons
-      = field_set_tag '', class: 'radio' do
-        .options
-          - missing_evidence_reasons.each do |mer|
-            .option
-              = ef.label 'Reasons' do
-                = ef.check_box :reason_ids
-                = mer.name
+      %fieldset
+        - missing_evidence_reasons.each do |mer|
+          %label.block_label{for: "reason_checkbox-#{mer.id}"}
+            %input{type: 'checkbox', id: "reason_checkbox-#{mer.id}", value: mer.id}
+            = mer.name
+
+       
 
 
       Custom Reason

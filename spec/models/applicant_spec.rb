@@ -26,6 +26,7 @@ describe Applicant, :type => :model do
                             forename: 'Stephen',
                             surname: 'Richards',
                             ni_number: 'ys327296x',
+                            status: 'Single',
                             date_of_birth: 20.years.ago)}
   context 'validations' do
     context 'presence' do
@@ -55,6 +56,24 @@ describe Applicant, :type => :model do
         applicant.date_of_birth = 18.years.ago + 1.day
         expect(applicant.valid?).to be false
         expect(applicant.errors[:date_of_birth]).to eq ['Applicant must be at least 18 years of age']
+      end
+    end
+
+
+    context 'status' do
+      it 'should recognise Single as valid' do
+        applicant.status = 'Single'
+        expect(applicant).to be_valid
+      end
+      it 'should recognise Couple as valid' do
+        applicant.status = 'Couple'
+        expect(applicant).to be_valid
+      end
+
+      it 'should recognise any thing else as invalid' do
+        applicant.status = 'Ménage à trois'
+        expect(applicant).to_not be_valid
+        expect(applicant.errors[:status]).to eq ["Ménage à trois is not a valid status"]
       end
     end
   end
