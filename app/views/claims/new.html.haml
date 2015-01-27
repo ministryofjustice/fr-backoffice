@@ -1,16 +1,17 @@
 %h1 Record an application for Fee Remission
 
-
-
-= form_for @claim, url: claim_new_path, :html => {method: :post} do |form|
+= form_for @claim,  :html => {method: :post} do |form|
   
   = render partial: 'applicant', locals: { applicant: @claim.applicant }
 
   = render partial: 'evidence', locals: { evidence: @claim.evidence, missing_evidence_reasons: @mers }
  
-  = render partial: 'income', locals: { applicant: @claim.applicant }
+  = render partial: 'income', locals: { applicant: @claim.applicant, claim: @claim }
 
   = render partial: 'case', locals: { claim: @claim }
 
+  = render partial: 'remission_details', locals: { claim: @claim }
+
+  %button.button Submit Claim
   
 

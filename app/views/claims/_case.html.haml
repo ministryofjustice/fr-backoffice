@@ -6,10 +6,10 @@
   %fieldset.inline
     .form-group.form-group-compound
       %label.block-label{for: 'radio-casetype-new'}
-        = cf.radio_button :new_case, true, {id: 'radio-casetype-new', name: 'radio-casetype-group'}
+        = cf.radio_button :new_case, true, {id: 'radio-casetype-new'}
         New case
       %label.block-label{for: 'radio-casetype-new'}
-        = cf.radio_button :new_case, false, {id: 'radio-casetype-existing', name: 'radio-casetype-group'}
+        = cf.radio_button :new_case, false, {id: 'radio-casetype-existing'}
         Existing case
 
     .panel-indent#missing-evidence-reasons

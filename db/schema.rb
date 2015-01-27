@@ -41,6 +41,9 @@ ActiveRecord::Schema.define(version: 20150127103611) do
     t.datetime "updated_at"
     t.boolean  "new_case"
     t.string   "case_number"
+    t.boolean  "refund"
+    t.string   "refund_reference_number"
+    t.date     "fee_paid_date"
   end
 
   create_table "evidences", force: true do |t|

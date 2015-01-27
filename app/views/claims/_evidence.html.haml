@@ -9,20 +9,20 @@
       Correct evidence supplied?
     .form-group.form-group-compound
       %label.block-label{for: 'radio-evidence-yes', :'data-target' => 'missing-evidence-reasons'}
-        = ef.radio_button :supplied, 'Yes', {id: 'radio-evidence-yes', name: 'evidence-supplied-radio-group'}
+        = ef.radio_button :supplied, 'Yes', {id: 'radio-evidence-yes'}
         Yes
       %label.block-label{for: 'radio-evidence-no'}
-        = ef.radio_button :supplied, 'No', {id: 'radio-evidence-no', name: 'evidence-supplied-radio-group'}
+        = ef.radio_button :supplied, 'No', {id: 'radio-evidence-no'}
         No 
     
     .panel-indent#missing-evidence-reasons
       %fieldset
         - missing_evidence_reasons.each do |mer|
           %label.block_label{for: "reason_checkbox-#{mer.id}"}
-            %input{type: 'checkbox', id: "reason_checkbox-#{mer.id}", value: mer.id}
+            %input{type: 'checkbox', id: "reason_checkbox-#{mer.id}", name: "evidence[missing_evidence][reason_#{mer.id}]", value: mer.id}
             = mer.name
 
       Custom Reason
       %p
-      = ef.text_area :custom_reason, class: 'custom_reason'
+      = ef.text_area :custom_reason, class: "custom_reason"
 
