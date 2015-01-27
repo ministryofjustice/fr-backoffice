@@ -1,0 +1,17 @@
+%section
+%h2 Case Details
+
+= fields_for claim do |cf|
+
+  %fieldset.inline
+    .form-group.form-group-compound
+      %label.block-label{for: 'radio-casetype-new'}
+        = cf.radio_button :new_case, true, {id: 'radio-casetype-new', name: 'radio-casetype-group'}
+        New case
+      %label.block-label{for: 'radio-casetype-new'}
+        = cf.radio_button :new_case, false, {id: 'radio-casetype-existing', name: 'radio-casetype-group'}
+        Existing case
+
+    .panel-indent#missing-evidence-reasons
+      = cf.label :case_number, class: 'form-label'
+      = cf.text_field :case_number

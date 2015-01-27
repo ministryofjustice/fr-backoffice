@@ -14,12 +14,13 @@
 #  updated_at       :datetime
 #
 
-class Claim < ActiveRecord::Base
-
-  belongs_to  :applicant
-  has_one     :evidence
-
-  validates :remission_type, inclusion: { in: %w(full partial none), message: "%{value} is not a valid status" }
-
+FactoryGirl.define do
+  factory :claim do
+    applicant           { FactoryGirl.create(:applicant) }
+    procedure_name      "Bank Statement"
+    court_fee           12000
+    application_date    Date.today
+    remission_type      'full'
+  end
 
 end

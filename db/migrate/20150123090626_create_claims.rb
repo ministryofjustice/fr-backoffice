@@ -7,6 +7,7 @@ class CreateClaims < ActiveRecord::Migration
       t.integer :value
       t.integer :court_fee
       t.date    :application_date
+      t.string  :remission_type
       t.timestamps
     end
   end

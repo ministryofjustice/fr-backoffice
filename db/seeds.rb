@@ -45,6 +45,7 @@ claims = Claim.create(
       procedure_name:         'Money Claim',
       value:                  68433,
       court_fee:              25000, 
+      remission_type:         'full',
       application_date:       1.day.ago
     },
     {
@@ -53,6 +54,7 @@ claims = Claim.create(
       procedure_name:         'Divorce',
       value:                  nil,
       court_fee:              45000, 
+      remission_type:         'partial',
       application_date:       3.days.ago
     }
   ]

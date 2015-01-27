@@ -8,7 +8,7 @@
     %legend.form-label
       Correct evidence supplied?
     .form-group.form-group-compound
-      %label.block-label{for: 'radio-evidence-yes', :'data-target' => 'missing-evidence-reasons', for: 'radio-evidence-yes'}
+      %label.block-label{for: 'radio-evidence-yes', :'data-target' => 'missing-evidence-reasons'}
         = ef.radio_button :supplied, 'Yes', {id: 'radio-evidence-yes', name: 'evidence-supplied-radio-group'}
         Yes
       %label.block-label{for: 'radio-evidence-no'}
@@ -22,10 +22,7 @@
             %input{type: 'checkbox', id: "reason_checkbox-#{mer.id}", value: mer.id}
             = mer.name
 
-       
-
-
       Custom Reason
       %p
       = ef.text_area :custom_reason, class: 'custom_reason'
-  
+
