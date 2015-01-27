@@ -2,7 +2,7 @@
 %h2 Remission Details
 
 
-= fields_for claim do |cf|
+= fields_for claim, claim, builder: BackOfficeFormBuilder do |cf|
   %fieldset
     %label.block-label{for: 'refund_checkbox' }
       = cf.check_box :refund
@@ -11,21 +11,8 @@
 
 
     .panel-indent#missing-evidence-reasons
-      %fieldset
-        %legend Date fee paid
-        .form-date
-          .form-group.form-group-day
-            %label{for: 'claim_fee_paid_3i'} Day
-            %input.moj-date-day#claim_fee_paid_3i{maxlength: 2, name: 'claim[fee_paid(3i)]', size: 2}
-
-          .form-group.form-group-day
-            %label{for: 'claim_fee_paid_2i'} Month
-            %input.moj-date-day#claim_fee_paid_3i{maxlength: 2, name: 'claim[fee_paid(2i)]', size: 2}
-
-          .form-group.form-group-day
-            %label{for: 'claim_fee_paid_1i'} Year
-            %input.moj-date-day#claim_fee_paid_3i{maxlength: 4, name: 'claim[fee_paid(1i)]', size: 4}
-
+      = cf.date_fieldset(:claim, :fee_paid_date, "Date Fee paid")
+      
       = cf.label :refund_reference_number
       = cf.text_field :refund_reference_number
       

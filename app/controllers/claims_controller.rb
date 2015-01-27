@@ -12,9 +12,7 @@ class ClaimsController < ApplicationController
   end
 
   def create
-    puts "++++++ DEBUG CREATE ++++++ #{__FILE__}::#{__LINE__} ++++\n"
-    ap params
-    
+    @claim_constructor = ClaimConstructor.new(claim_params)
   end
 
   def update
@@ -27,5 +25,13 @@ class ClaimsController < ApplicationController
   end
 
   def edit
+  end
+
+
+  private
+
+
+  def claim_params
+      params.require(:claim).permit(:remission_type, :new_case, :case_number, :refund, :fee_paid, :refund_reference_number)
   end
 end
