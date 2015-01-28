@@ -33,7 +33,13 @@ class Evidence < ActiveRecord::Base
   def reasons=(reasons)
     raise_unsaved_reason_error if any_ids_nil?(reasons)
     self.reason_ids = reasons.map(&:id)
-    
+  end
+
+  # converts a hash of missing evidence reasons to an array of reason_ids
+  # {"reason_5"=>"5", "reason_6"=>"6"} => ['5', '6']
+  #
+  def missing_evidence=(hash)
+    self.reason_ids = hash.values
   end
 
   private

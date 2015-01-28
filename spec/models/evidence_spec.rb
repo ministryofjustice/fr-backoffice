@@ -51,6 +51,15 @@ describe Evidence, :type => :model do
   end
 
 
+  describe '#missing_evidence=' do
+    it 'should populate reason_ids' do
+      evidence = Evidence.new
+      evidence.missing_evidence = {"reason_1"=>"12", "reason_6"=>"6"}
+      expect(evidence.reason_ids).to eq( [ '12', '6' ] )
+    end
+  end
+
+
   describe '#reasons=' do
     it 'should replace existing reason ids with new reason ids' do
       evidence = Evidence.new(supplied: true, reason_ids: [r2.id, r1.id])

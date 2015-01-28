@@ -32,6 +32,6 @@ class ClaimsController < ApplicationController
 
 
   def claim_params
-      params.require(:claim).permit(:remission_type, :new_case, :case_number, :refund, :fee_paid, :refund_reference_number)
+      params.require(:claim).permit(:remission_type, :new_case, :case_number, :refund, :fee_paid_date, :refund_reference_number)
   end
 end

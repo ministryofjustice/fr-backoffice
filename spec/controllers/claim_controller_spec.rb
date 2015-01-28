@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ClaimController, :type => :controller do
+RSpec.describe ClaimsController, :type => :controller do
 
   describe "GET index" do
     it "returns http success" do
