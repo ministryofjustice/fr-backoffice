@@ -3,20 +3,17 @@ class ClaimConstructor
   attr_reader :claim
 
   def initialize(params)
-    puts "++++++ DEBUG permitted params ++++++ #{__FILE__}::#{__LINE__} ++++\n"
-    pp params
-    
-    evidence_params = convert_bools(params[:evidence], :supplied)
-    @evidence = Evidence.new(evidence_params)
-
+    @evidence = Evidence.new( convert_bools(params[:evidence], :supplied) )
     @applicant = Applicant.new(params[:applicant])
-
-    claim_params = convert_bools(params[:claim], :new_case, :refund)
-    @claim = Claim.new(claim_params)
+    @claim = Claim.new( convert_bools(params[:claim], :new_case, :refund) )
     @claim.applicant = @applicant
     @claim.evidence = @evidence
   end
 
+
+  def valid?
+    
+  end
 
 
   private

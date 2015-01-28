@@ -3,8 +3,6 @@ class ClaimsController < ApplicationController
   end
 
   def new
-    puts "++++++ DEBUG NEW ++++++ #{__FILE__}::#{__LINE__} ++++\n"
-    
     @claim = Claim.new
     @claim.applicant = Applicant.new
     @claim.evidence = Evidence.new
