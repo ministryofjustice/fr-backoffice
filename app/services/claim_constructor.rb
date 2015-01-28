@@ -3,12 +3,15 @@ class ClaimConstructor
   attr_reader :claim
 
   def initialize(params)
-    evidence_params = convert_bools(params['evidence'], :supplied)
+    puts "++++++ DEBUG permitted params ++++++ #{__FILE__}::#{__LINE__} ++++\n"
+    pp params
+    
+    evidence_params = convert_bools(params[:evidence], :supplied)
     @evidence = Evidence.new(evidence_params)
 
-    @applicant = Applicant.new(params['applicant'])
+    @applicant = Applicant.new(params[:applicant])
 
-    claim_params = convert_bools(params['claim'], :new_case, :refund)
+    claim_params = convert_bools(params[:claim], :new_case, :refund)
     @claim = Claim.new(claim_params)
     @claim.applicant = @applicant
     @claim.evidence = @evidence
@@ -19,6 +22,7 @@ class ClaimConstructor
   private
 
   def convert_bools(hash, *keys)
+    
     keys.each { |key|  hash[key] = convert_bool(hash[key]) }
     hash
   end

@@ -44,3 +44,7 @@ end
 group :development do
   gem 'annotate', '~> 2.6.5'
 end
+
+group :production do
+  gem 'rails_12factor'
+end
