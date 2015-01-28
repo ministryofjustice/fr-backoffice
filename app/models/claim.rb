@@ -24,7 +24,29 @@ class Claim < ActiveRecord::Base
   belongs_to  :applicant
   has_one     :evidence
 
-  validates :remission_type, inclusion: { in: %w(full partial none), message: "%{value} is not a valid status" }
+  validates :remission_type, inclusion: { in: %w(full partial none), message: "%{value} is not a valid status" }, allow_nil: true
+  validates :remission_type, presence: true
+  validates_associated :evidence, :applicant
+
+  @@submodels = [:applicant, :evidence]
+
+
+  def error_messages
+    messages = self.errors.full_messages
+    @@submodels.each do |submodel|
+      messages += self.send(submodel).errors.full_messages unless self.send(submodel).nil?
+    end
+    messages
+  end
+
+
+
+  private
+
+  def submodel_validation
+    add_errors_from(:evidence) unless @evidence.valid?
+    add_errors_from(:applicant) unless @applicant.valid?
+  end
 
 
 end

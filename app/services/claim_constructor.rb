@@ -11,9 +11,7 @@ class ClaimConstructor
   end
 
 
-  def valid?
-    
-  end
+  
 
 
   private

@@ -36,6 +36,12 @@ describe Claim, :type => :model do
         end
       end
 
+      it 'should reject missing remission type' do
+        claim.remission_type = nil
+        expect(claim).not_to be_valid
+        expect(claim.errors[:remission_type]).to eq ["can't be blank"]
+      end
+
       it 'should not validate invalid remission types' do
         claim.remission_type = 'semi-remitted'
         expect(claim).not_to be_valid
