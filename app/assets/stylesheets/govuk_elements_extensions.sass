@@ -53,10 +53,20 @@ fieldset.radio
 #court-address.panel-indent
   margin-top: 0px
 
+
+.form-label
+  font-size: 15px
+
+.block-label
+  // padding: 18px 30px 15px 45px
+  padding: 12px 15px 11px 45px
+
 legend
   @extend .form-label
   color: #000000
   margin-top: 15px
+  margin-bottom: 1px
+  font-size: 15px
 
 select
   @extend .form-label
@@ -69,9 +79,11 @@ label[for]
   @extend .form-label
   margin-top: 15px
   margin-bottom: 2px
+  font-size: 15px
 
 label + input
   @extend .form-control
+  font-size: 15px
 
 label + textarea
   @extend .form-control
