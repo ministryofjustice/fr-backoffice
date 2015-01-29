@@ -3,11 +3,14 @@ class ClaimConstructor
   attr_reader :claim
 
   def initialize(params)
+    puts "++++++ DEBUG claim constructyor ++++++ #{__FILE__}::#{__LINE__} ++++\n"
+    pp params
+    
     @evidence = Evidence.new( convert_bools(params[:evidence], :supplied) )
     @applicant = Applicant.new(params[:applicant])
     @claim = Claim.new( convert_bools(params[:claim], :new_case, :refund) )
-    @claim.applicant = @applicant
-    @claim.evidence = @evidence
+    @claim.applicant = @applicant  || Applicant.new
+    @claim.evidence = @evidence || Evidence.new
   end
 
 

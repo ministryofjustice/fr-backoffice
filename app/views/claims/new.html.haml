@@ -1,5 +1,7 @@
 %h1 Record an application for Fee Remission
 
+= render partial: 'errors', locals: { claim: @claim }
+
 = form_for @claim,  :html => {method: :post} do |form|
 
   .grid-row
