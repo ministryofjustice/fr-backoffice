@@ -18,13 +18,6 @@ class Evidence < ActiveRecord::Base
   belongs_to :claim
 
 
-  def initialize(params = {})
-    puts "++++++ DEBUG Evidence initialize  ++++++ #{__FILE__}::#{__LINE__} ++++\n"
-    pp params
-    super
-  end
-
-
   def <<(reason)
     raise_unsaved_reason_error if reason.id.nil?
     self.reason_ids << reason.id unless self.reason_ids.include?(reason.id)
@@ -44,8 +37,6 @@ class Evidence < ActiveRecord::Base
   # {"reason_5"=>"5", "reason_6"=>"6"} => ['5', '6']
   #
   def missing_evidence=(hash)
-    puts "++++++ DEBUG missinf evidence #{hash.inspect} ++++++ #{__FILE__}::#{__LINE__} ++++\n"
-    
     self.reason_ids = hash.values
   end
 
