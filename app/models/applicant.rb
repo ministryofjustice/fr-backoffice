@@ -27,9 +27,11 @@ class Applicant < ActiveRecord::Base
 
 
   def ni_number_validation
-    unless self.ni_number_before_type_cast.nil?
-      unless self.ni_number_before_type_cast.valid?
-        errors[:ni_number] << 'Invalid National Insurance Number'
+    if self.ni_number.is_a?(NationalInsuranceNumber)
+      unless self.ni_number_before_type_cast.nil?
+        unless self.ni_number_before_type_cast.valid?
+          errors[:ni_number] << 'Invalid National Insurance Number'
+        end
       end
     end
   end

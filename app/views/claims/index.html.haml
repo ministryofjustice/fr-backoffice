@@ -1,2 +1,22 @@
-%h1 Claim#index
-%p Find me in app/views/claim/index.html.haml
+%h1 Fee Remission Claims
+%table
+  %thead
+    %tr
+      %th{scope: 'col'}= 'Ref no.'
+      %th{scope: 'col'}= 'Date'
+      %th{scope: 'col'}= 'Name'
+      %th{scope: 'col'}= 'Form/Procedure'
+      %th{scope: 'col'}= 'Accepted'
+  %tbody
+    - @claims.each do |claim|
+      %tr
+        %td= claim.reference_number
+        %td= claim.date_signed
+        %td= claim.applicant.surname
+        %td= claim.procedure_name
+        %td Yes 
+
+
+
+%p
+=link_to "Enter a new Fee Remission Application", new_claim_path

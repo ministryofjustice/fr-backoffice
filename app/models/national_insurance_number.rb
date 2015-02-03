@@ -3,6 +3,7 @@ class NationalInsuranceNumber
   attr_reader :ni_code
 
   def initialize(string)
+    raise "Bank" if string.is_a?(NationalInsuranceNumber)
     @ni_code = string.upcase.gsub(' ', '') unless string.nil?
   end
   

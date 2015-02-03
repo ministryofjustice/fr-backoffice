@@ -5,7 +5,9 @@
     Your reference number is
   %span.number
     = @claim.reference_number
-%h2 What happens next
-%ol.list-number
-  %li Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tristique aliquam tristique. Mauris vitae lobortis.
-  %li Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tristique aliquam tristique. Mauris vitae lobortis.
+
+%hr
+
+=link_to 'Enter a new Fee Remission application', new_claim_path
+&nbsp;&nbsp;&nbsp;
+=link_to "View applications", claims_path
