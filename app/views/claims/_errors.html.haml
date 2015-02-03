@@ -2,10 +2,9 @@
 -if flash[:notice].present?
   .flash-notice= flash[:notice]
 
--unless @claim.new_record? 
-  -unless @claim.valid?
+-unless @claim.valid?
 
-    %h3.error-messages Errors prevented this record from being saved
-    %ul
-      - claim.error_messages.each do |message|
-        %li.error-messages= message
+  %h3.error-messages Errors prevented this record from being saved
+  %ul
+    - claim.error_messages.each do |message|
+      %li.error-messages= message
