@@ -1,0 +1,13 @@
+%section
+%h2 Savings
+
+= fields_for applicant, builder: BackOfficeFormBuilder  do |applicant_form|
+
+  %fieldset
+    .form-group.form-group-compound
+      %label.block-label{for: 'exceeds-first-threshold'}
+        = applicant_form.radio_button :status, 'false', {id: 'exceeds-first-threshold', name: 'applicant[savings_exceed_first_threshold]'}
+        Less than £3,000
+      %label.block-label{for: 'less-than-first-threshold'}
+        = applicant_form.radio_button :status, 'true', {id: 'less-than-first-threshold', name:  'applicant[savings_exceed_first_threshold]'}
+        More than £3,000

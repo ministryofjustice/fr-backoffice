@@ -1,17 +1,18 @@
 %section
 %h2 Case Details
 
-= fields_for claim do |cf|
+= form_for claim, builder: BackOfficeFormBuilder  do |claim_form|
 
-  %fieldset.inline
-    .form-group.form-group-compound
-      %label.block-label{for: 'radio-casetype-new'}
-        = cf.radio_button :new_case, 1, {id: 'radio-casetype-new'}
-        New case
-      %label.block-label{for: 'radio-casetype-new'}
-        = cf.radio_button :new_case, 0, {id: 'radio-casetype-existing'}
-        Existing case
+  = claim_form.label :procedure_name, 'Claim Type/Form Number'
+  = claim_form.text_field :procedure_name
 
-    .panel-indent#missing-evidence-reasons
-      = cf.label :case_number, class: 'form-label'
-      = cf.text_field :case_number
+  = claim_form.label :court_fee, 'Fee'
+  = claim_form.text_field :court_fee, class: 'narrow'
+
+  = claim_form.label :case_number, 'Case Number'
+  = claim_form.text_field :case_number, class: 'narrow'
+
+  = claim_form.date_fieldset :claim, :fee_paid_date, 'Date Fee Paid'
+
+
+  

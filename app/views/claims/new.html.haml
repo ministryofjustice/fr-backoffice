@@ -2,20 +2,18 @@
 
 = render partial: 'errors', locals: { claim: @claim }
 
-= form_for @claim,  :html => {method: :post} do |form|
+= form_for @claim, builder: BackOfficeFormBuilder, :html => {method: :post} do |form|
+  = render partial: 'case', locals: { claim: @claim }
+  = render partial: 'savings', locals: { applicant: @claim.applicant }
+  = render partial: 'income', locals: { applicant: @claim.applicant, claim: @claim }
 
-  .grid-row
-    .column-half
-      = render partial: 'applicant', locals: { applicant: @claim.applicant }
-    .column-half
-      = render partial: 'evidence', locals: { evidence: @claim.evidence, missing_evidence_reasons: @mers }
-  %hr      
-  .grid-row
-    .column-half
-      = render partial: 'income', locals: { applicant: @claim.applicant, claim: @claim }
-    .column-half
-      = render partial: 'case', locals: { claim: @claim }
-      = render partial: 'remission_details', locals: { claim: @claim }
 
+  -# = render partial: 'applicant', locals: { applicant: @claim.applicant }
+  -# = render partial: 'evidence', locals: { evidence: @claim.evidence, missing_evidence_reasons: @mers }
+  -
+  -# = render partial: 'case', locals: { claim: @claim }
+  -# = render partial: 'remission_details', locals: { claim: @claim }
+
+  %p
   %button.button Submit Claim
   

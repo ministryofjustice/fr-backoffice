@@ -1,55 +1,17 @@
 %section
 %h2 Income
 
-= fields_for applicant do |applicant_form|
-  %fieldset.inline
-    %legend.form-label
-      Status
-    .form-group.form-group-compound
-      %label.block-label{for: 'radio-status-single'}
-        = applicant_form.radio_button :status, 'Single', {id: 'radio-status-single', name: 'applicant[status]'}
-        Single
-      %label.block-label{for: 'radio-status-couple'}
-        = applicant_form.radio_button :status, 'Single', {id: 'radio-status-couple', name:  'applicant[status]'}
-        Couple
-
-
-  %fieldset.inline
-    %legend.form-label
-      Children
-    .form-group.form-group-compound
-      %label.block-label{for: 'radio-children-0'}
-        = applicant_form.radio_button :num_dependent_children, 0, {id: 'radio-children-0'}
-        None
-      %label.block-label{for: 'radio-children-2'}
-        = applicant_form.radio_button :num_dependent_children, 1, {id: 'radio-children-1'}
-        1
-      %label.block-label{for: 'radio-children-2'}
-        = applicant_form.radio_button :num_dependent_children, 1, {id: 'radio-children-2'}
-        2
-      %label.block-label{for: 'radio-children-3'}
-        = applicant_form.radio_button :num_dependent_children, 1, {id: 'radio-children-3'}
-        3 or more
-
-
-= fields_for claim do |claim_form| 
+= fields_for applicant, builder: BackOfficeFormBuilder do |form|
   %fieldset
-    %legend.form-label
-      Gross Monthly Income
     .form-group.form-group-compound
-      %label.block-label{for: 'remission-full'}
-        = claim_form.radio_button :remission_type, 'full', {id: 'remission-full'}
-        Full Remission - 
-        %span.emphasize
-          £1,085 or less
-      %label.block-label{for: 'remission-partial'}
-        = claim_form.radio_button :remission_type, 'partial', {id: 'remission-partial'}
-        Part Remission - 
-        %span.emphasize
-          £1,086 - £5,085
-      %label.block-label{for: 'remission-none'}
-        = claim_form.radio_button :remission_type, 'none', {id: 'remission-none'}
-        No Remission - 
-        %span.emphasize
-          £5,086 or more
-      
+      %label.block-label{for: 'income-status-benefits'}
+        = applicant_form.radio_button :income_status, 'false', {id: 'income-status-benefits', name: 'applicant[income_status]'}
+        Receiving Benefits
+      %label.block-label{for: 'income-status-low'}
+        = applicant_form.radio_button :income_status, 'true', {id: 'income-status-low', name:  'applicant[income_status]'}
+        On a low income
+
+  = af.date_fieldset :applicant, :date_of_birth, 'Date of Birth'
+
+  = af.label :ni_number, 'National Insurance Number'
+  = af.text_field :ni_number, class: 'narrow'
