@@ -22,13 +22,12 @@
 class Claim < ActiveRecord::Base
 
   belongs_to  :applicant
-  has_one     :evidence
 
-  validates :remission_type, inclusion: { in: %w(full partial none), message: "%{value} is not a valid status" }, allow_nil: true
-  validates :remission_type, presence: true
-  validates_associated :evidence, :applicant
+  validates_associated  :applicant
 
-  @@submodels = [:applicant, :evidence]
+  before_create :generate_unique_number
+
+  @@submodels = [:applicant]
 
 
   def error_messages
@@ -42,6 +41,10 @@ class Claim < ActiveRecord::Base
 
 
   private
+
+  def generate_unique_number
+    self.reference_number = SecureRandom.hex(4)
+  end
 
   def submodel_validation
     add_errors_from(:evidence) unless @evidence.valid?

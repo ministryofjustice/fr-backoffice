@@ -14,7 +14,11 @@ Rails.application.routes.draw do
 
   # get 'claim/edit'
 
-  resources :claims
+  resources :claims do
+    member do
+      get 'completion'
+    end
+  end
 
   scope FrBackoffice::Application.config.relative_url_root || '/' do
     root 'welcome#index'
@@ -30,6 +34,8 @@ Rails.application.routes.draw do
 
     get '/remission/thresholds',    controller: :remission_calculator, action: :thresholds
     get '/fee/contribution',        controller: :remission_calculator, action: :contribution
+
+
 
     # The priority is based upon order of creation: first created -> highest priority.
     # See how all your routes lay out with "rake routes".

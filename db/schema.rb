@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150203141645) do
+ActiveRecord::Schema.define(version: 20150203155917) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20150203141645) do
     t.string   "refund_reference_number"
     t.date     "fee_paid_date"
     t.date     "date_signed"
+    t.string   "reference_number"
   end
 
   create_table "evidences", force: true do |t|
@@ -61,6 +62,13 @@ ActiveRecord::Schema.define(version: 20150203141645) do
 
   create_table "missing_evidence_reasons", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "search_suggestions", force: true do |t|
+    t.string   "term"
+    t.integer  "popularity"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

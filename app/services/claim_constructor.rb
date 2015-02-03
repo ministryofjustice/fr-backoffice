@@ -3,11 +3,9 @@ class ClaimConstructor
   attr_reader :claim
 
   def initialize(params)
-    @evidence = Evidence.new( convert_bools(params[:evidence], :supplied) )
     @applicant = Applicant.new(params[:applicant])
     @claim = Claim.new( convert_bools(params[:claim], :new_case, :refund) )
     @claim.applicant = @applicant  || Applicant.new
-    @claim.evidence = @evidence || Evidence.new
   end
 
 
@@ -17,7 +15,6 @@ class ClaimConstructor
   private
 
   def convert_bools(hash, *keys)
-    
     keys.each { |key|  hash[key] = convert_bool(hash[key]) }
     hash
   end

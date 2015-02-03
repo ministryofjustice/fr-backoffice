@@ -1,7 +1,7 @@
 %section
 %h2 Case Details
 
-= form_for claim, builder: BackOfficeFormBuilder  do |claim_form|
+= fields_for claim, claim, builder: BackOfficeFormBuilder  do |claim_form|
 
   = claim_form.label :procedure_name, 'Claim Type/Form Number'
   = claim_form.text_field :procedure_name

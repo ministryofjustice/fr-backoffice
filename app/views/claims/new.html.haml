@@ -8,13 +8,7 @@
   = render partial: 'income', locals: { applicant: @claim.applicant, claim: @claim }
   = render partial: 'applicant', locals: { claim: @claim }
 
-
-
-  -# = render partial: 'evidence', locals: { evidence: @claim.evidence, missing_evidence_reasons: @mers }
-  -
-  -# = render partial: 'case', locals: { claim: @claim }
-  -# = render partial: 'remission_details', locals: { claim: @claim }
-
   %p
-  %button.button Submit Claim
+  = form.submit 'Accept', class: 'button primary'
+  = form.submit 'Reject', class: 'button reject primary'
   
