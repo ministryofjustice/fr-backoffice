@@ -1,17 +1,16 @@
 %section
   %h2 Applicant Details
-  = fields_for applicant, applicant, builder: BackOfficeFormBuilder do |af|
+  = fields_for claim.applicant, claim.applicant, builder: BackOfficeFormBuilder do |af|
     = af.label :title, 'Title'
     = af.text_field :title, class: 'narrow'
 
-    = af.label :forename, 'Forename'
+    = af.label :forename, 'First name'
     = af.text_field :forename
 
-    = af.label :surname, "Surname"
+    = af.label :surname, "Last name"
     = af.text_field :surname
+  
+  %p
 
-    = af.date_fieldset :applicant, :date_of_birth, 'Date of Birth'
-   
-
-    = af.label :ni_number, 'National Insurance Number'
-    = af.text_field :ni_number, class: 'narrow'
+  = fields_for claim, claim, builder: BackOfficeFormBuilder do |claim_form|
+    = claim_form.date_fieldset :claim, :date_signed, 'Date signed'

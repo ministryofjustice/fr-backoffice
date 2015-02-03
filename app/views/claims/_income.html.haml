@@ -1,7 +1,7 @@
 %section
 %h2 Income
 
-= fields_for applicant, builder: BackOfficeFormBuilder do |form|
+= fields_for applicant, applicant, builder: BackOfficeFormBuilder do |applicant_form|
   %fieldset
     .form-group.form-group-compound
       %label.block-label{for: 'income-status-benefits'}
@@ -11,7 +11,7 @@
         = applicant_form.radio_button :income_status, 'true', {id: 'income-status-low', name:  'applicant[income_status]'}
         On a low income
 
-  = af.date_fieldset :applicant, :date_of_birth, 'Date of Birth'
+    = applicant_form.date_fieldset :applicant, :date_of_birth, 'Date of Birth'
 
-  = af.label :ni_number, 'National Insurance Number'
-  = af.text_field :ni_number, class: 'narrow'
+    = applicant_form.label :ni_number, 'National Insurance Number'
+    = applicant_form.text_field :ni_number, class: 'narrow'

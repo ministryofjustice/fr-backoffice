@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150203124313) do
+ActiveRecord::Schema.define(version: 20150203141645) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20150203124313) do
     t.boolean  "refund"
     t.string   "refund_reference_number"
     t.date     "fee_paid_date"
+    t.date     "date_signed"
   end
 
   create_table "evidences", force: true do |t|
