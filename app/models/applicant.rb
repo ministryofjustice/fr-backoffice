@@ -20,30 +20,30 @@ class Applicant < ActiveRecord::Base
 
   has_many :applications
 
-  validates :title, :forename, :surname, :date_of_birth, :ni_number, presence: true
-  validate  :ni_number_validation
-  validate  :date_of_birth_validation
+  validates :title, :forename, :surname,  presence: true
+  # validate  :ni_number_validation
+  # validate  :date_of_birth_validation
 
 
 
-  def ni_number_validation
-    if self.ni_number.is_a?(NationalInsuranceNumber)
-      unless self.ni_number_before_type_cast.nil?
-        unless self.ni_number_before_type_cast.valid?
-          errors[:ni_number] << 'Invalid National Insurance Number'
-        end
-      end
-    end
-  end
+  # def ni_number_validation
+  #   if self.ni_number.is_a?(NationalInsuranceNumber)
+  #     unless self.ni_number_before_type_cast.nil?
+  #       unless self.ni_number_before_type_cast.valid?
+  #         errors[:ni_number] << 'Invalid National Insurance Number'
+  #       end
+  #     end
+  #   end
+  # end
 
 
-  def date_of_birth_validation
-    unless self.date_of_birth.nil?
-      if self.date_of_birth > 18.years.ago
-        errors[:date_of_birth] << 'Applicant must be at least 18 years of age'
-      end
-    end
-  end
+  # def date_of_birth_validation
+  #   unless self.date_of_birth.nil?
+  #     if self.date_of_birth > 18.years.ago
+  #       errors[:date_of_birth] << 'Applicant must be at least 18 years of age'
+  #     end
+  #   end
+  # end
 
 
   def ni_number=(string)
