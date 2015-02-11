@@ -18,4 +18,10 @@ rails s
 
 Heroku:
 
-https://fr-backend-proto.herokuapp.com/claims/new
+
+- to add heroku as a remote: 
+  ```heroku git:remote -a fr-backend-proto```
+- to push the lastes master to heroku:
+  ```git push heroku master```
+- url to view deployed page:
+  ```https://fr-backend-proto.herokuapp.com/claims/new```
