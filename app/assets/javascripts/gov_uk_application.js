@@ -114,10 +114,13 @@ function ShowHideContent() {
 
 
   self.showHideTextFieldContent = function () {
-    $(".block-label input[type='text']").each(function() {
+    $("input[type='text'].div-expander").each(function() {
+
+      console.log('input text with div expander class found');
       var $textField = $(this);
-      var $textFieldLabel = $(this).parent();
-      var $dataTarget = $checkboxLabel.attr('data-target');
+      var $dataTarget = $textField.attr('data-target');
+
+
 
       // If the data-target attribute is defined
       if (typeof $dataTarget !== 'undefined' && $dataTarget !== false) {
@@ -130,12 +133,16 @@ function ShowHideContent() {
         $('#'+$dataTarget).attr('aria-hidden', 'true');
 
         // For checkboxes revealing hidden content
-        $textField.on('click', function() {
-
+        $textField.on('keyup', function() {
+          
           var state = $(this).attr('aria-expanded') === 'false' ? true : false;
 
           // Toggle hidden content
-          $('#'+$dataTarget).toggle();
+          if ($textField.val().length > 0) {
+            $('#'+$dataTarget).show();
+          } else {
+            $('#'+$dataTarget).hide();
+          }
 
           // Update aria-expanded and aria-hidden attributes
           $(this).attr('aria-expanded', state);
@@ -165,5 +172,6 @@ $(document).ready(function() {
   var toggleContent = new ShowHideContent();
   toggleContent.showHideRadioToggledContent();
   toggleContent.showHideCheckboxToggledContent();
+  toggleContent.showHideTextFieldContent();
 
 });

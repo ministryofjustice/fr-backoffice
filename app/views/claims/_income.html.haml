@@ -29,10 +29,10 @@
             Couple
 
         = applicant_form.label :num_dependent_children, 'Number of children'
-        = applicant_form.text_field :num_dependent_children, class: 'narrow'
+        = applicant_form.text_field :num_dependent_children, :class => 'narrow div-expander', :'data-target' => 'gross-monthly-income-bands'
 
 
-      %fieldset
+      %fieldset.js-hidden#gross-monthly-income-bands
         %legend.form-label-bold Gross Monthly Income
         %label.block-label{for: 'checkbox-1'}
           %input#checkbox-1{type: 'checkbox', value: 'full'}
