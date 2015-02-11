@@ -1,21 +1,15 @@
 function ShowHideContent() {
   var self = this;
 
-  self.doubleEscapeElementName = function(str) {
-    result = str.replace('[', '\\\\[').replace(']', '\\\\]')
-    return result;
+
+  self.escapeElementName = function(str) {
+    result = str.replace('[', '\\[').replace(']', '\\]')
+    return(result);
   };
-
-
-  self.singleEscapeElementName = function(str) {
-    result = str.replace('[', '\\[').replace(']', '\\]');
-    return result;
-  };
-
-
 
   self.showHideRadioToggledContent = function () {
     $(".block-label input[type='radio']").each(function () {
+
       var $radio = $(this);
       var $radioGroupName = $radio.attr('name');
       var $radioLabel = $radio.parent('label');
@@ -31,8 +25,9 @@ function ShowHideContent() {
         $radio.attr('aria-controls', dataTarget);
 
         $radio.on('click', function () {
+
           // Select radio buttons in the same group
-          $radio.closest('form').find(".block-label input[name=" + self.singleEscapeElementName($radioGroupName) + ']').each(function () {
+          $radio.closest('form').find(".block-label input[name=" + self.escapeElementName($radioGroupName) + "]").each(function () {
             var $this = $(this);
 
             var groupDataTarget = $this.parent('label').attr('data-target');
@@ -58,8 +53,9 @@ function ShowHideContent() {
         // hide visible data-target content for radio buttons in the same group
 
         $radio.on('click', function () {
+
           // Select radio buttons in the same group
-          $(".block-label input[name=" + self.singleEscapeElementName($radioGroupName) + "]").each(function () {
+          $(".block-label input[name=" + self.escapeElementName($radioGroupName) + "]").each(function () {
 
             var groupDataTarget = $(this).parent('label').attr('data-target');
             var $groupDataTarget = $('#' + groupDataTarget);
@@ -112,6 +108,41 @@ function ShowHideContent() {
         });
       }
 
+    });
+  }
+
+
+
+  self.showHideTextFieldContent = function () {
+    $(".block-label input[type='text']").each(function() {
+      var $textField = $(this);
+      var $textFieldLabel = $(this).parent();
+      var $dataTarget = $checkboxLabel.attr('data-target');
+
+      // If the data-target attribute is defined
+      if (typeof $dataTarget !== 'undefined' && $dataTarget !== false) {
+
+        // Set aria-controls
+        $textField.attr('aria-controls', $dataTarget);
+
+        // Set aria-expanded and aria-hidden
+        $textField.attr('aria-expanded', 'false');
+        $('#'+$dataTarget).attr('aria-hidden', 'true');
+
+        // For checkboxes revealing hidden content
+        $textField.on('click', function() {
+
+          var state = $(this).attr('aria-expanded') === 'false' ? true : false;
+
+          // Toggle hidden content
+          $('#'+$dataTarget).toggle();
+
+          // Update aria-expanded and aria-hidden attributes
+          $(this).attr('aria-expanded', state);
+          $('#'+$dataTarget).attr('aria-hidden', !state);
+
+        });
+      }
     });
   }
 }
