@@ -13,3 +13,9 @@ rake db:create
 rake db:migrate
 rails s
 ```
+
+
+
+Heroku:
+
+https://fr-backend-proto.herokuapp.com/claims/new

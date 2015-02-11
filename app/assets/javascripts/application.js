@@ -14,3 +14,9 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//
+// from govuk_elements gem
+//= require details.polyfill
+//= require bind
+//= require selection-buttons
+//= require gov_uk_application
