@@ -21,11 +21,11 @@
       %fieldset.inline
         %legend.form-label Status
         .form-group.form-group-compound
-          %label.block-label{for: 'partner-status'}
+          %label.block-label{for: 'single-status'}
             = applicant_form.radio_button :status, 'single', {id: 'single-status', name: 'applicant[status]'}
             Single
           %label.block-label{for: 'partner-status'}
-            = applicant_form.radio_button :status, 'partnered', {id: 'single-status', name: 'applicant[status]'}
+            = applicant_form.radio_button :status, 'partnered', {id: 'partner-status', name: 'applicant[status]'}
             Couple
 
         = applicant_form.label :num_dependent_children, 'Number of children'
