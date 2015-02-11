@@ -8,7 +8,7 @@ function ShowHideContent() {
 
 
   self.singleEscapeElementName = function(str) {
-    result = str.replace('[', '\\[').replace(']', '\\]')
+    result = str.replace('[', '\\[').replace(']', '\\]');
     return result;
   };
 
